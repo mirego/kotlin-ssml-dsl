@@ -3,17 +3,24 @@ buildscript {
 
     repositories {
         mavenCentral()
+        maven{ url("https://s3.amazonaws.com/mirego-maven/public") }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "mirego:release-plugin:+"
     }
 }
 
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+
 group 'com.mirego.dsl'
-version '1.0-SNAPSHOT'
 
 apply plugin: 'kotlin'
-apply plugin: "groovy"
+apply plugin: 'groovy'
+apply plugin: 'maven-publish'
+apply plugin: 'mirego.release'
 
 repositories {
     mavenCentral()
@@ -31,4 +38,69 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+compileTestGroovy {
+    dependsOn tasks.getByPath('compileTestKotlin')
+    classpath += files(compileTestKotlin.destinationDir)
+}
+
+def pomConfig = {
+    licenses {
+        license {
+            name "BSD 3-Clause License"
+            url "https://github.com/mirego/kotlin-ssml-dsl/blob/master/LICENSE"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            name "Nicolas Presseault"
+        }
+    }
+
+    scm {
+        url "https://github.com/mirego/kotlin-ssml-dsl"
+    }
+}
+
+release {
+    checkTasks = [
+        ':check'
+    ]
+    buildTasks = [
+        ':bintrayUpload'
+    ]
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier 'sources'
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            artifact sourceJar
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', 'Kotlin SSML DSL that supports actions-on-google elements and attributes.')
+                root.appendNode('name', 'Kotlin SSML DSL')
+                root.appendNode('url', 'https://github.com/mirego/kotlin-ssml-dsl')
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    pkg {
+        repo = 'public'
+        name = 'kotlin-ssml-dsl'
+        userOrg = 'mirego'
+        vcsUrl = 'https://github.com/mirego/kotlin-ssml-dsl.git'
+    }
 }
