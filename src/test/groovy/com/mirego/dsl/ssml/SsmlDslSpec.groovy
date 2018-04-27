@@ -130,7 +130,6 @@ class SsmlDslSpec extends Specification {
             I can also substitute phrases, like the <sub alias="World Wide Web Consortium">W3C</sub>.
             Finally, I can speak a paragraph with two sentences.
             <p><s>This is sentence one.</s><s>This is sentence two.</s></p>
-            </speak>
-        """.stripIndent()
+            </speak>""".stripIndent()
     }
 }
