@@ -6,13 +6,20 @@ A kotlin library that provides DSL to build SSML. Supports Actions on Google ele
 
 # Get started
 
+This goes into your `build.gradle`.
 ```groovy
+repositories {
+  maven { url("https://mirego.bintray.com/public") }
+}
+
+dependencies {
   compile 'com.mirego.dsl:ssml:1.0'
+}
 ```
 
 # Usage
 
-Markup
+
 ```kotlin
 val ssml = speak {
   +"Here are "; sayAs(interpretAs = CHARACTERS) { +"SSML" }; +" samples.\n"
