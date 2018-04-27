@@ -20,7 +20,7 @@ fun fewNodesSpeak() = speak {
 }
 
 fun allNodesSpeak() = speak {
-    `break`(time = "1s")
+    `break`(time = "1s", strength = Strength.X_STRONG)
     p {
         +"Hello world. "
         +"Can have more than one."

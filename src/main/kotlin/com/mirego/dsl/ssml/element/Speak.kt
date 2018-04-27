@@ -12,9 +12,7 @@ fun speak(init: Speak.() -> Unit): Speak {
 }
 
 fun String.toSpeak() = speak {
-    p {
-        +this@toSpeak
-    }
+    p { +this@toSpeak }
 }
 
 class Speak(list: MutableList<Element> = mutableListOf()) : SsmlTag("speak", list) {

@@ -49,7 +49,7 @@ class SsmlDslSpec extends Specification {
         then:
         xml == """\
             <speak>
-              <break time="1s"/>
+              <break strength="x-strong" time="1s"/>
               <p>
                 Hello world. 
                 Can have more than one.

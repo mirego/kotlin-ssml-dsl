@@ -7,8 +7,8 @@ import com.mirego.dsl.ssml.TagWithText
 fun SsmlTag.sayAs(interpretAs: InterpretAs, format: String? = null, detail: String? = null, init: SayAs.() -> Unit) {
     val sayAs = initTag(SayAs(), init)
     sayAs.interpretAs = interpretAs
-    format?.let { sayAs.format = it }
-    detail?.let { sayAs.detail = it }
+    sayAs.format = format
+    sayAs.detail = detail
 }
 
 class SayAs : TagWithText("say-as") {
@@ -17,8 +17,8 @@ class SayAs : TagWithText("say-as") {
         set(value) {
             attributes["interpret-as"] = value.attributeValue
         }
-    var format: String by attributes
-    var detail: String by attributes
+    var format: String? by attributes
+    var detail: String? by attributes
 }
 
 

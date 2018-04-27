@@ -5,19 +5,19 @@ import com.mirego.dsl.ssml.TagWithText
 
 fun SsmlTag.prosody(rate: String? = null, pitch: String? = null, contour: String? = null, duration: String? = null, volume: String? = null, range: String? = null, init: Prosody.() -> Unit) {
     val prosody = initTag(Prosody(), init)
-    rate?.let { prosody.rate = it }
-    pitch?.let { prosody.pitch = it }
-    contour?.let { prosody.contour = it }
-    duration?.let { prosody.duration = it }
-    volume?.let { prosody.volume = it }
-    range?.let { prosody.range = it }
+    prosody.rate = rate
+    prosody.pitch = pitch
+    prosody.contour = contour
+    prosody.duration = duration
+    prosody.volume = volume
+    prosody.range = range
 }
 
 class Prosody : TagWithText("prosody") {
-    var rate: String by attributes
-    var pitch: String by attributes
-    var contour: String by attributes
-    var duration: String by attributes
-    var volume: String by attributes
-    var range: String by attributes
+    var rate: String? by attributes
+    var pitch: String? by attributes
+    var contour: String? by attributes
+    var duration: String? by attributes
+    var volume: String? by attributes
+    var range: String? by attributes
 }

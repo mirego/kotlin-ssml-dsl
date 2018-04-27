@@ -4,16 +4,16 @@ import com.mirego.dsl.ssml.AttributeEnum
 import com.mirego.dsl.ssml.SsmlTag
 import com.mirego.dsl.ssml.TagWithText
 
-fun SsmlTag.emphasis(level: EmphasisLevel, init: Emphasis.() -> Unit) {
+fun SsmlTag.emphasis(level: EmphasisLevel? = null, init: Emphasis.() -> Unit) {
     val e = initTag(Emphasis(), init)
     e.level = level
 }
 
 class Emphasis : TagWithText("emphasis") {
-    var level: EmphasisLevel
+    var level: EmphasisLevel?
         get() = EmphasisLevel.attributeValueOf(attributes["level"]!!)!!
         set(value) {
-            attributes["level"] = value.attributeValue
+            attributes["level"] = value?.attributeValue
         }
 }
 
