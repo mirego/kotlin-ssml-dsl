@@ -75,15 +75,19 @@ release {
 }
 
 task sourceJar(type: Jar) {
-    from sourceSets.main.allJava
+    from sourceSets.main.allSource
     classifier 'sources'
 }
 
+artifacts.archives sourceJar
+
 publishing {
     publications {
-        MyPublication(MavenPublication) {
+        maven(MavenPublication) {
             from components.java
-            artifact sourceJar
+            artifact sourceJar {
+                classifier 'sources'
+            }
             pom.withXml {
                 def root = asNode()
                 root.appendNode('description', 'Kotlin SSML DSL that supports actions-on-google elements and attributes.')
@@ -98,10 +102,17 @@ publishing {
 bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_KEY')
+    publish = true
+    publications = ['maven']
     pkg {
         repo = 'public'
         name = 'kotlin-ssml-dsl'
         userOrg = 'mirego'
         vcsUrl = 'https://github.com/mirego/kotlin-ssml-dsl.git'
+        version {
+            name = project.version
+            released = new Date()
+            vcsTag = project.version
+        }
     }
 }
