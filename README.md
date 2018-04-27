@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mirego/kotlin-ssml-dsl.svg?branch=master)](https://travis-ci.org/mirego/kotlin-ssml-dsl)
+
 # kotlin-ssml-dsl
 
 A kotlin library that provides DSL to build SSML. Supports Actions on Google elements.
