@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/mirego/kotlin-ssml-dsl.svg?branch=master)](https://travis-ci.org/mirego/kotlin-ssml-dsl)
+[![Download](https://api.bintray.com/packages/mirego/public/kotlin-ssml-dsl/images/download.svg) ](https://bintray.com/mirego/public/kotlin-ssml-dsl/_latestVersion)
 
 # kotlin-ssml-dsl
 
@@ -8,10 +9,6 @@ A kotlin library that provides DSL to build SSML. Supports Actions on Google ele
 
 This goes into your `build.gradle`.
 ```groovy
-repositories {
-  maven { url("https://mirego.bintray.com/public") }
-}
-
 dependencies {
   compile 'com.mirego.dsl:ssml:1.0'
 }
