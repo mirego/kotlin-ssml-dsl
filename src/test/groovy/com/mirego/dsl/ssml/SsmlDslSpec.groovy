@@ -59,6 +59,9 @@ class SsmlDslSpec extends Specification {
               </p>
               <emphasis level="moderate">
                 Emphasis!
+                <p>
+                  Phrase
+                </p>
               </emphasis>
               <say-as interpret-as="cardinal">
                 1234
@@ -68,6 +71,9 @@ class SsmlDslSpec extends Specification {
               </say-as>
               <prosody duration="duration" volume="volume" rate="rate" range="range" pitch="pitch" contour="contour">
                 Test prosody
+                <p>
+                  Phrase
+                </p>
               </prosody>
               <prosody>
                 Empty prosody

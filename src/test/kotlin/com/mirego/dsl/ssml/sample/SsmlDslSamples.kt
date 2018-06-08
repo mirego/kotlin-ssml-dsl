@@ -28,6 +28,7 @@ fun allNodesSpeak() = speak {
     }
     emphasis(level = EmphasisLevel.MODERATE) {
         +"Emphasis!"
+        p { +"Phrase" }
     }
     sayAs(interpretAs = CARDINAL) {
         +"1234"
@@ -37,6 +38,7 @@ fun allNodesSpeak() = speak {
     }
     prosody(rate = "rate", pitch = "pitch", contour = "contour", duration = "duration", volume = "volume", range = "range") {
         +"Test prosody"
+        p { +"Phrase" }
     }
     prosody {
         +"Empty prosody"

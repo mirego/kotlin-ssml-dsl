@@ -16,7 +16,7 @@ fun SsmlTag.audio(src: String, clipBegin: String? = null, clipEnd: String? = nul
 
 class Desc : TagWithText("desc")
 
-class Audio : SsmlTag("audio") {
+class Audio : TagWithText("audio") {
     var src: String by attributes
     var clipBegin: String? by attributes
     var clipEnd: String? by attributes
