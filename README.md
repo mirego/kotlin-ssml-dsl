@@ -10,7 +10,7 @@ A kotlin library that provides DSL to build SSML. Supports Actions on Google ele
 This goes into your `build.gradle`.
 ```groovy
 dependencies {
-  compile 'com.mirego.dsl:ssml:1.0'
+  compile 'com.mirego.dsl:ssml:1.1'
 }
 ```
 
