@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/mirego/kotlin-ssml-dsl.svg?branch=master)](https://travis-ci.org/mirego/kotlin-ssml-dsl)
+[![Build Status](https://travis-ci.com/mirego/kotlin-ssml-dsl.svg?branch=master)](https://travis-ci.com/mirego/kotlin-ssml-dsl)
 [![Download](https://api.bintray.com/packages/mirego/public/kotlin-ssml-dsl/images/download.svg) ](https://bintray.com/mirego/public/kotlin-ssml-dsl/_latestVersion)
 
 # kotlin-ssml-dsl
